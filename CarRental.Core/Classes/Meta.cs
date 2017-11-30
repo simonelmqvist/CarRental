@@ -5,7 +5,6 @@ using System.Text.RegularExpressions;
 using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Web;
-using CarRental.Core.Classes.Search;
 using Skybrud.Umbraco.GridData;
 using Skybrud.Umbraco.GridData.Values;
 using System.Web;

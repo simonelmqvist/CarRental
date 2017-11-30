@@ -460,8 +460,6 @@
     <Content Include="media\1010\gopro-cross.jpg" />
     <Content Include="media\1010\gopro-cross_big-thumb.jpg" />
     <Content Include="media\1010\gopro-cross_thumb.jpg" />
-    <Content Include="scripts\bootstrap.js" />
-    <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\cookie-warning.js" />
     <Content Include="App_Plugins\GibeLinkPicker\package.manifest" />
     <Content Include="css\tools\px-to-em.scss" />
@@ -486,14 +484,9 @@
     <Content Include="App_Plugins\Camelonta.ActivityLog\package.manifest" />
     <Content Include="Config\uSyncBackOffice.Config" />
     <Content Include="Config\uSyncCore.config" />
-    <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\data-uniform-image-height.js" />
-    <Content Include="scripts\jquery-1.10.2.js" />
-    <Content Include="scripts\jquery-1.10.2.min.js" />
-    <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="scripts\vendor\jquery.auto-complete.js" />
     <Content Include="scripts\vendor\jquery.highlight.js" />
-    <Content Include="scripts\search.js" />
     <Content Include="scripts\faq.js" />
     <Content Include="scripts\helper.js" />
     <Content Include="scripts\vendor\ltie9\html5shiv.js" />
@@ -510,7 +503,6 @@
     <Content Include="Views\CommonPage.cshtml" />
     <Content Include="Views\CommonPageGrid.cshtml" />
     <Content Include="Views\Home.cshtml" />
-    <Content Include="Views\Search.cshtml" />
     <Content Include="Views\_Layout.cshtml" />
     <Content Include="Views\Partials\_MainNav.cshtml" />
     <Content Include="Views\MacroPartials\PageList.cshtml" />
@@ -578,7 +570,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Media.cshtml" />
@@ -589,6 +580,8 @@
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2-Fluid.cshtml" />
+    <Content Include="Views\Receive.cshtml" />
+    <Content Include="Views\Rent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

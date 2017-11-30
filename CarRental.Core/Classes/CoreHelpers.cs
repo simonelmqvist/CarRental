@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 using Umbraco.Core.Models;
@@ -31,6 +32,27 @@ namespace CarRental.Core.Classes
         {
             var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
             return umbracoHelper.TypedContentAtRoot().FirstOrDefault();
+        }
+
+        public static List<SelectListItem> TextareaToSelectListItems(string textArea)
+        {
+            var listItems = new List<SelectListItem>();
+
+            if (!string.IsNullOrEmpty(textArea))
+            {
+                textArea = textArea.Replace("\r", "");
+                var items = textArea.Split('\n').ToList();
+                foreach (var item in items)
+                {
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = item,
+                        Value = item
+                    });
+                }
+            }
+
+            return listItems;
         }
     }
 }

@@ -1,0 +1,31 @@
+﻿@using CarRental.Core.Controllers
+@using Umbraco.Web
+@inherits UmbracoViewPage<CarRental.Core.ViewModels.RentFormViewModel>
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<main role="main">
+        
+    @Html.GetGridHtml(Model.Content, "grid")
+        
+    <div class="rent">
+            
+        @using (Html.BeginUmbracoForm<RentSurfaceController>("SubmitForm", FormMethod.Post, new {enctype = "multipart/form-data"}))
+        {
+            @Html.AntiForgeryToken()
+
+            
+            <fieldset>
+                @Html.LabelFor(x => x.RentForm.CarCategory)
+                @Html.DropDownListFor(x => x.RentForm.CarCategory, Model.AllCarCategories, "Välj typ av bil")
+                @Html.ValidationMessageFor(x => x.RentForm.CarCategory)
+            </fieldset>
+
+
+            @ViewBag.Message
+        }
+
+    </div>
+
+</main>

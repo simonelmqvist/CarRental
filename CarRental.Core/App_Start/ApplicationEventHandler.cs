@@ -3,23 +3,17 @@ using System.Linq;
 using System.Web.Optimization;
 using Camelonta.Utilities;
 using Umbraco.Core;
-using CarRental.Core.Classes.Search;
 
 namespace CarRental.Core
 {
     public class ApplicationEventHandler : IApplicationEventHandler
     {
-        static ExamineIndexer _examineIndexer;
-
         public void OnApplicationStarting(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext) { }
         public void OnApplicationInitialized(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext) { }
         public void OnApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
             // Register bundles
             RegisterBundles(BundleTable.Bundles);
-
-            // Instance ExamineIndexer
-            _examineIndexer = new ExamineIndexer();
         }
 
         void RegisterBundles(BundleCollection bundles)
@@ -70,7 +64,6 @@ namespace CarRental.Core
                 "video.js",
                 "cookie-warning.js",
                 "faq.js",
-                "search.js", // Script for search
                 "data-uniform-image-height.js"
 
             }.Select(jsFile => scriptsPath + jsFile).ToArray(); // Add scripts-path;
