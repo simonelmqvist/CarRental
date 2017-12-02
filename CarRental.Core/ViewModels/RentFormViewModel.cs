@@ -13,7 +13,7 @@ namespace CarRental.Core.ViewModels
 
         public RentFormViewModel(IPublishedContent content) : base(content) { }
 
-        public RentForm RentForm { get; set; }
+        public RentDbModel RentForm { get; set; }
 
         public IPublishedContent CurrentPage { get; set; }
 

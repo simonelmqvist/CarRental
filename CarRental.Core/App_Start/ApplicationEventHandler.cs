@@ -1,8 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Autofac;
+using Autofac.Integration.Mvc;
+using System.Reflection;
+using System.Web.Http;
+using System.Web.Mvc;
 using System.Web.Optimization;
-using Camelonta.Utilities;
 using Umbraco.Core;
+using Umbraco.Web;
+using Autofac.Integration.WebApi;
+using Camelonta.Utilities;
+using CarRental.Core.Classes.Abstract;
+using CarRental.Core.Classes.Concrete;
 
 namespace CarRental.Core
 {
@@ -14,6 +23,28 @@ namespace CarRental.Core
         {
             // Register bundles
             RegisterBundles(BundleTable.Bundles);
+
+            // Dependency Injection
+            RegisterIoc();
+        }
+
+        private static void RegisterIoc()
+        {
+            var builder = new ContainerBuilder();
+
+            // Register all controllers found in this assembly
+            builder.RegisterInstance(ApplicationContext.Current).AsSelf();
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterApiControllers(typeof(UmbracoApplication).Assembly);// Web API
+
+            // Add types to be resolved
+            builder.RegisterType<DbRents>().As<IDbRents<RentDbModel>>();
+
+            // Configure Http and Controller Resolvers
+            var container = builder.Build();
+            var resolver = new AutofacWebApiDependencyResolver(container);// web api
+            GlobalConfiguration.Configuration.DependencyResolver = resolver; // web api
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
         void RegisterBundles(BundleCollection bundles)

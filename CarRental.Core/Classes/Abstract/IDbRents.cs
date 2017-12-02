@@ -11,7 +11,5 @@ namespace CarRental.Core.Classes.Abstract
         IEnumerable<T> GetAll();
 
         T GetById(int id);
-
-        void CreateTabelIfNone();
     }
 }

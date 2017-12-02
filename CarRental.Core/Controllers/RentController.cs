@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using CarRental.Core.Classes;
+using CarRental.Core.Classes.Abstract;
+using CarRental.Core.Classes.Concrete;
 using CarRental.Core.ViewModels;
 using Umbraco.Web;
 using Umbraco.Web.Mvc;
@@ -9,6 +11,10 @@ namespace CarRental.Core.Controllers
 {
     public class RentController : RenderMvcController
     {
+        private readonly IDbRents<RentDbModel> _db;
+
+        public RentController(IDbRents<RentDbModel> db) { _db = db; }
+
         public ActionResult Index()
         {
             var model = new RentFormViewModel(CurrentPage)

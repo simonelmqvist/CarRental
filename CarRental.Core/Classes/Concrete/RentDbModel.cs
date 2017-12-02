@@ -1,12 +1,18 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using CarRental.Core.Classes.Abstract;
+using Umbraco.Core.Persistence;
+using Umbraco.Core.Persistence.DatabaseAnnotations;
 
 namespace CarRental.Core.Classes.Concrete
 {
-    public class RentForm : IRentFormModel
+    [TableName("CrRents")]
+    [PrimaryKey("Id", autoIncrement = true)]
+    public class RentDbModel : IRentDbModel
     {
-        public string BookingId { get; set; }
+        [Column("Id")]
+        [PrimaryKeyColumn(AutoIncrement = true)]
+        public int BookingId { get; set; }
 
         //regex?
         [Display(Name = "Registreringsnummer *")]
@@ -17,7 +23,7 @@ namespace CarRental.Core.Classes.Concrete
         public string PersonalNumber { get; set; }
 
         [Display(Name = "Typ av bil *")]
-        public Enums.CarCategory CarCategory { get; set; }
+        public string CarCategory { get; set; }
 
         [Display(Name = "Mätarställning (km) *")]
         public int Mileage { get; set; }

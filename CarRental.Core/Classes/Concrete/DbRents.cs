@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CarRental.Core.Classes.Abstract;
-using CarRental.Core.Models;
 using Umbraco.Core;
 using Umbraco.Core.Persistence;
 
 namespace CarRental.Core.Classes.Concrete
 {
-    public class DbRents : IDbRents<RentsDbModel>
+    public class DbRents : IDbRents<RentDbModel>
     {
         private readonly DatabaseSchemaHelper _dbSchemaHelper;
         private readonly Database _db;
@@ -22,38 +21,37 @@ namespace CarRental.Core.Classes.Concrete
             _tableName = "CrRents";
         }
 
-        public void Insert(RentsDbModel model)
+        public void Insert(RentDbModel model)
         {
             CreateTabelIfNone();
-
             _db.Insert(model);
         }
 
-        public void Delete(RentsDbModel model)
+        public void Delete(RentDbModel model)
         {
             _db.Delete(model);
         }
 
-        public IEnumerable<RentsDbModel> GetAll()
+        public IEnumerable<RentDbModel> GetAll()
         {
             CreateTabelIfNone();
 
             var query = "Select * From " + _tableName;
-            return _db.Query<RentsDbModel>(query);
+            return _db.Query<RentDbModel>(query);
         }
 
-        public RentsDbModel GetById(int id)
+        public RentDbModel GetById(int id)
         {
             CreateTabelIfNone();
 
             var query = "Select From " + _tableName + " Where BookingId = " + id;
-            return _db.Query<RentsDbModel>(query).FirstOrDefault();
+            return _db.Query<RentDbModel>(query).FirstOrDefault();
         }
 
         public void CreateTabelIfNone()
         {
             if (!_dbSchemaHelper.TableExist(_tableName))
-                _dbSchemaHelper.CreateTable<RentsDbModel>(false);
+                _dbSchemaHelper.CreateTable<RentDbModel>(false);
         }
     }
 }
