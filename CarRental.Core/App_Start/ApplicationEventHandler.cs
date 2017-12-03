@@ -39,6 +39,7 @@ namespace CarRental.Core
 
             // Add types to be resolved
             builder.RegisterType<DbRents>().As<IDbRents<RentDbModel>>();
+            builder.RegisterType<DbReceives>().As<IDbReceives<ReceiveDbModel>>();
 
             // Configure Http and Controller Resolvers
             var container = builder.Build();
@@ -56,6 +57,7 @@ namespace CarRental.Core
                 "vendor/normalize.css", // Should be before base.css
                 "vendor/bootstrap.css",
                 "vendor/jquery.auto-complete.css", // Stylesheet for search
+                "vendor/bootstrap-datetimepicker.css",
                 
                 "Bundled.css",
 
@@ -88,6 +90,13 @@ namespace CarRental.Core
                 "vendor/jquery.highlight.js", // Script for search
                 "vendor/jquery.auto-complete.js", // Script for search
                 
+                "vendor/jquery.validate-vsdoc.js",
+                "vendor/jquery.validate.min.js",
+                "vendor/jquery.validate.unobtrusive.min.js",
+                "vendor/jquery.unobtrusive-ajax.js",
+                "vendor/expressive.annotations.validate.min.js",
+
+                "vendor/bootstrap-datetimepicker.min.js",
 
                 "main.js",
                 "nav.js",

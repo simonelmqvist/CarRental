@@ -6,44 +6,44 @@ using Umbraco.Core.Persistence;
 
 namespace CarRental.Core.Classes.Concrete
 {
-    public class DbRents : IDbRents<RentDbModel>
+    public class DbReceives : IDbReceives<ReceiveDbModel>
     {
         private readonly DatabaseSchemaHelper _dbSchemaHelper;
         private readonly Database _db;
         private readonly string _tableName;
 
-        public DbRents()
+        public DbReceives()
         {
             var applicationContext = ApplicationContext.Current;
             var ctx = applicationContext.DatabaseContext;
             _dbSchemaHelper = new DatabaseSchemaHelper(ctx.Database, applicationContext.ProfilingLogger.Logger, ctx.SqlSyntax);
             _db = ApplicationContext.Current.DatabaseContext.Database;
-            _tableName = "CrRents";
+            _tableName = "CrReceives";
         }
 
-        public void Insert(RentDbModel model)
+        public void Insert(ReceiveDbModel model)
         {
             CreateTabelIfNone();
             _db.Insert(model);
         }
 
-        public void Delete(RentDbModel model)
+        public void Delete(ReceiveDbModel model)
         {
             _db.Delete(model);
         }
 
-        public IRentDbModel GetByBookingId(int id)
+        public IReceiveDbModel GetByBookingId(int id)
         {
             CreateTabelIfNone();
 
             var query = "Select * From " + _tableName + " Where BookingId = " + id;
-            return _db.Query<RentDbModel>(query).FirstOrDefault();
+            return _db.Query<ReceiveDbModel>(query).FirstOrDefault();
         }
 
         public void CreateTabelIfNone()
         {
             if (!_dbSchemaHelper.TableExist(_tableName))
-                _dbSchemaHelper.CreateTable<RentDbModel>(false);
+                _dbSchemaHelper.CreateTable<ReceiveDbModel>(false);
         }
     }
 }

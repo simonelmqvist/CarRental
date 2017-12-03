@@ -16,11 +16,18 @@ var Camelonta = (function () {
     var init = function () {
         replaceRightColumn();
 
-        // Global resize-event. Triggered if the resize-event has been still for 200ms (debounced)
-        // Lägg all logik som händer vid resize här
         $(window).resize(Camelonta.Helper.Debouncer(function () {
             replaceRightColumn();
         }));
+
+        $(".dateInput").datetimepicker({
+            showTodayButton: true,
+            inline: false,
+            format: "yyyy-mm-dd hh:mm",
+            sideBySide: true,
+            horizontal: 'right',
+            vertical: 'top'
+        });
 
         // Hack for making CTA's work correctly when created in Tiny
         $('[class^="button"], [class^="icon"]').click(function (e) {

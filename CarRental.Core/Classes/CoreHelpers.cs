@@ -54,5 +54,16 @@ namespace CarRental.Core.Classes
 
             return listItems;
         }
+
+        public static List<string> TextareaToList(string textArea)
+        {
+            if (!string.IsNullOrEmpty(textArea))
+            {
+                textArea = textArea.Replace("\r", "");
+                return textArea.Split('\n').ToList();
+            }
+
+            return new List<string>();
+        }
     }
 }

@@ -6,15 +6,21 @@
 }
 
 <main role="main">
-        
+
     @Html.GetGridHtml(Model.Content, "grid")
-        
+
     <div class="rent">
         <div class="container">
             
-            @using (Html.BeginUmbracoForm<RentSurfaceController>("SubmitForm", FormMethod.Post, new {enctype = "multipart/form-data"}))
+            @using (Html.BeginUmbracoForm<CrSurfaceController>("SubmitRentForm", FormMethod.Post, new {enctype = "multipart/form-data"}))
             {
                 @Html.AntiForgeryToken()
+
+                <fieldset>
+                    @Html.LabelFor(x => x.RentForm.BookingId)
+                    @Html.TextBoxFor(x => x.RentForm.BookingId)
+                    @Html.ValidationMessageFor(x => x.RentForm.BookingId)
+                </fieldset>
 
                 <fieldset>
                     @Html.LabelFor(x => x.RentForm.CarCategory)
@@ -24,25 +30,25 @@
 
                 <fieldset>
                     @Html.LabelFor(x => x.RentForm.RegistrationNumber)
-                    @Html.TextBoxFor(x => x.RentForm.RegistrationNumber, new {placeholder = HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.RentForm.RegistrationNumber).ToHtmlString())})
+                    @Html.TextBoxFor(x => x.RentForm.RegistrationNumber)
                     @Html.ValidationMessageFor(x => x.RentForm.RegistrationNumber)
                 </fieldset>
 
                 <fieldset>
                     @Html.LabelFor(x => x.RentForm.Mileage)
-                    @Html.TextBoxFor(x => x.RentForm.Mileage, new { placeholder = HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.RentForm.Mileage).ToHtmlString()) })
+                    @Html.TextBoxFor(x => x.RentForm.Mileage)
                     @Html.ValidationMessageFor(x => x.RentForm.Mileage)
                 </fieldset>
 
                 <fieldset>
                     @Html.LabelFor(x => x.RentForm.PersonalNumber)
-                    @Html.TextBoxFor(x => x.RentForm.PersonalNumber, new { placeholder = HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.RentForm.PersonalNumber).ToHtmlString()) })
+                    @Html.TextBoxFor(x => x.RentForm.PersonalNumber)
                     @Html.ValidationMessageFor(x => x.RentForm.PersonalNumber)
                 </fieldset>
 
-                @Html.ValidationSummary()
-
                 <input type="submit" class="button" value="Boka" />
+
+                <div id="message"></div>
             }
 
         </div>

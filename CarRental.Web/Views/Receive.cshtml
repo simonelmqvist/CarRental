@@ -1,29 +1,46 @@
-﻿@inherits CamelontaUmbracoTemplatePage
+﻿@using CarRental.Core.Controllers
+@using Umbraco.Web
+@inherits UmbracoViewPage<CarRental.Core.ViewModels.ReceiveFormViewModel>
 @{
     Layout = "~/Views/_Layout.cshtml";
-    var insideContainer = LeftNavigation.Any() && !Model.Content.GetPropertyValue<bool>("hideLeftNav");
-    var hasRightColumn = SideContent != null && SideContent.Any();
 }
 
-@if (insideContainer || hasRightColumn)
-{
-    <div class="container">
-        @PageContent()
+<main role="main">
+
+    @Html.GetGridHtml(Model.Content, "grid")
+
+    <div class="rent">
+        <div class="container">
+
+            @using (Html.BeginUmbracoForm<CrSurfaceController>("SubmitReceiveForm", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <fieldset>
+                    @Html.LabelFor(x => x.ReceiveForm.BookingId)
+                    @Html.TextBoxFor(x => x.ReceiveForm.BookingId)
+                    @Html.ValidationMessageFor(x => x.ReceiveForm.BookingId)
+                </fieldset>
+
+                <fieldset>
+                    @Html.LabelFor(x => x.ReceiveForm.Mileage)
+                    @Html.TextBoxFor(x => x.ReceiveForm.Mileage)
+                    @Html.ValidationMessageFor(x => x.ReceiveForm.Mileage)
+                </fieldset>
+
+                <fieldset>
+                    @Html.LabelFor(x => x.ReceiveForm.Date)
+                    @Html.TextBoxFor(x => x.ReceiveForm.Date, new {@class = "dateInput"})
+                    @Html.ValidationMessageFor(x => x.ReceiveForm.Date)
+                </fieldset>
+
+                <input type="submit" class="button" value="Boka" />
+
+                <div id="message"></div>
+            }
+
+        </div>
+
     </div>
-}
-else
-{
-    <div class="container one-col">
-        @PageContent()
-    </div>
-}
 
-@helper PageContent()
-{
-    Html.RenderPartial("Layout/_LeftNav");
-    Html.RenderPartial("Layout/_RightColumnContent");
-
-    <main role="main">
-        @Html.GetGridHtml(Model.Content, "grid")
-    </main>
-}
+</main>

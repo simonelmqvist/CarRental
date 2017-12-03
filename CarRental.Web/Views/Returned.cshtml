@@ -1,0 +1,14 @@
+﻿@inherits UmbracoViewPage<CarRental.Core.ViewModels.ReturnedViewModel>
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<main role="main">
+    @Html.GetGridHtml(Model.Content, "grid")
+</main>
+
+<div class="price">
+    <div class="container">
+        <h2>Pris: @Model.Price kr</h2>
+    </div>
+</div>

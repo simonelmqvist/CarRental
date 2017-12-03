@@ -5,12 +5,16 @@
     overflow: hidden;
     background-repeat: no-repeat;
     max-height: 80vh;
-    height: 450px;
+    min-height: 30vh;
+    height: calc(100vh - 410px);
     background-position: center;
 
-    @media screen and (max-width: 800px) {
-        min-height: 450px;
-        height: auto;
+    @media screen and (max-width: 1430px) {
+        height: calc(100vh - 368px);
+    }
+
+    @media screen and (max-width: 991px) {
+        height: calc(100vh - 398px);
         font-size: .8em;
     }
 }

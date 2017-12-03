@@ -177,12 +177,15 @@ a {
   overflow: hidden;
   background-repeat: no-repeat;
   max-height: 80vh;
-  height: 450px;
+  min-height: 30vh;
+  height: calc(100vh - 410px);
   background-position: center; }
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1430px) {
     #hero {
-      min-height: 450px;
-      height: auto;
+      height: calc(100vh - 368px); } }
+  @media screen and (max-width: 991px) {
+    #hero {
+      height: calc(100vh - 398px);
       font-size: .8em; } }
 
 .container {
@@ -227,8 +230,7 @@ footer {
   background: #64706c;
   border-top: 20px solid #ede9ce;
   color: white;
-  padding: 20px 0 80px;
-  margin-top: 90px; }
+  padding: 20px 0 80px; }
   footer p {
     margin: 3px 0; }
 
@@ -242,8 +244,7 @@ footer {
   flex: 1 0; }
 
 main {
-  overflow: hidden;
-  min-height: 20vh; }
+  overflow: hidden; }
 
 .grid-section > div {
   background-position: center;
@@ -312,8 +313,7 @@ textarea {
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 2px;
-  vertical-align: middle;
-  -webkit-appearance: none; }
+  vertical-align: middle; }
 
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -371,6 +371,23 @@ input[type="button"] {
 /* Don't hide any fields if javascript is turned off. Fields are hidden when enabling conditions */
 .no-js .contourField {
   display: block !important; }
+
+fieldset {
+  position: relative;
+  margin-bottom: 2em; }
+  fieldset label {
+    display: block; }
+
+.datetimepicker {
+  position: absolute;
+  display: none;
+  background: #f1f1f1; }
+
+input[type=submit] {
+  background-color: #935347; }
+
+input[type=submit]:hover {
+  background-color: #935347; }
 
 /*--------------------------------------*/
 /*--------------------------------------*/
@@ -650,11 +667,9 @@ nav a {
   font-weight: 100; }
 
 /* --------------------------------------------------- */
-/* 
+.page-home #main-content-wrapper {
+  background: #ede9ce; }
 
-    STRUKTURDEMO
-
-*/
 .page-search #main-content-wrapper > .container {
   width: 820px; }
 

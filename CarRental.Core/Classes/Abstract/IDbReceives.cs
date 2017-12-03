@@ -8,10 +8,6 @@ namespace CarRental.Core.Classes.Abstract
 
         void Delete(T entity);
 
-        IEnumerable<T> GetAll();
-
-        T GetById(int id);
-
-        void CreateTabelIfNone();
+        IReceiveDbModel GetByBookingId(int id);
     }
 }

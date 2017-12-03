@@ -6,9 +6,9 @@ using Umbraco.Core.Persistence.DatabaseAnnotations;
 
 namespace CarRental.Core.Classes.Concrete
 {
-    [TableName("CrRents")]
+    [TableName("CrReceives")]
     [PrimaryKey("Id", autoIncrement = true)]
-    public class RentDbModel : IRentDbModel
+    public class ReceiveDbModel : IReceiveDbModel
     {
         [Column("Id")]
         [PrimaryKeyColumn(AutoIncrement = true)]
@@ -20,22 +20,11 @@ namespace CarRental.Core.Classes.Concrete
         public int BookingId { get; set; }
 
         [Required(ErrorMessage = "Obligatorisk")]
-        [RegularExpression(@"[A-Za-z]{3}[0-9]{3}$", ErrorMessage = "Ogiltigt registreringsnummer")]
-        [Display(Name = "Registreringsnummer *")]
-        public string RegistrationNumber { get; set; }
-
-        [Required(ErrorMessage = "Obligatorisk")]
-        [Display(Name = "Personnummer *")]
-        public string PersonalNumber { get; set; }
-
-        [Display(Name = "Typ av bil *")]
-        [Required(ErrorMessage = "Obligatorisk")]
-        public string CarCategory { get; set; }
-
-        [Required(ErrorMessage = "Obligatorisk")]
         [Display(Name = "Mätarställning (km) *")]
         public int Mileage { get; set; }
 
+        [Required(ErrorMessage = "Obligatorisk")]
+        [Display(Name = "Tid")]
         public DateTime Date { get; set; }
     }
 }

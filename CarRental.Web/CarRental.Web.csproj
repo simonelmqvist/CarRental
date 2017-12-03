@@ -432,9 +432,7 @@
     <Content Include="Config\Lang\zh-CN.user.xml" />
     <Content Include="Config\splashes\booting.aspx" />
     <Content Include="Config\splashes\noNodes.aspx" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="css\vendor\bootstrap-datetimepicker.min.css" />
     <Content Include="css\Bundled.css">
       <DependentUpon>Bundled.scss</DependentUpon>
     </Content>
@@ -447,7 +445,6 @@
     <Content Include="css\vendor\normalize.css" />
     <Content Include="css\print.css" />
     <Content Include="default.aspx" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="img\default-social-share.jpg" />
     <Content Include="img\video-play.png" />
@@ -485,10 +482,19 @@
     <Content Include="Config\uSyncBackOffice.Config" />
     <Content Include="Config\uSyncCore.config" />
     <Content Include="scripts\data-uniform-image-height.js" />
+    <Content Include="css\vendor\bootstrap-datetimepicker.css" />
+    <Content Include="scripts\vendor\bootstrap-datetimepicker.min.js" />
     <Content Include="scripts\vendor\jquery.auto-complete.js" />
     <Content Include="scripts\vendor\jquery.highlight.js" />
     <Content Include="scripts\faq.js" />
     <Content Include="scripts\helper.js" />
+    <Content Include="scripts\vendor\jquery.unobtrusive-ajax.js" />
+    <Content Include="scripts\vendor\jquery.unobtrusive-ajax.min.js" />
+    <None Include="scripts\vendor\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\vendor\jquery.validate.js" />
+    <Content Include="scripts\vendor\jquery.validate.min.js" />
+    <Content Include="scripts\vendor\jquery.validate.unobtrusive.js" />
+    <Content Include="scripts\vendor\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\vendor\ltie9\html5shiv.js" />
     <Content Include="scripts\vendor\jquery-1.11.2.min.js" />
     <Content Include="scripts\vendor\js-cookie.2.0.js" />
@@ -567,9 +573,6 @@
     <Content Include="css\components\video.scss" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Media.cshtml" />
@@ -582,6 +585,7 @@
     <Content Include="Views\Partials\Grid\Bootstrap2-Fluid.cshtml" />
     <Content Include="Views\Receive.cshtml" />
     <Content Include="Views\Rent.cshtml" />
+    <Content Include="Views\Returned.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -607,7 +611,9 @@
       <Name>CarRental.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="fonts\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
