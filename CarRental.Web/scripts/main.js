@@ -21,12 +21,12 @@ var Camelonta = (function () {
         }));
 
         $(".dateInput").datetimepicker({
-            showTodayButton: true,
-            inline: false,
-            format: "yyyy-mm-dd hh:mm",
-            sideBySide: true,
-            horizontal: 'right',
-            vertical: 'top'
+            //showTodayButton: true,
+            //inline: false,
+            //format: "yyyy-mm-dd hh:mm A",
+            //sideBySide: true,
+            //horizontal: 'right',
+            //vertical: 'top'
         });
 
         // Hack for making CTA's work correctly when created in Tiny
